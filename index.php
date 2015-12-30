@@ -1,4 +1,12 @@
-<?php $status = "ON"; ?>
+
+
+<?php 
+/*
+author 		: saufi.rahman@ui.ac.id
+desription 	:
+web ini merupakan webservice untuk FOLLA projek akhir sysprog FASILKOM UI 2015
+*/
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,13 +80,13 @@
 
 		$(document ).ready(function(){
 			
-			$("#onoff" ).click(function(){
-				var xmlhttp = new XMLHttpRequest();
-				var url = "http://localhost/follafinal/status.json";
+			$("#onoff" ).click(function(){ // jika id onoff di klik akan menjalankan function didalamnya
+				var xmlhttp = new XMLHttpRequest(); // bikin http request
+				var url = "http://localhost/follafinal/status.json"; // file yang di akses
 
 				xmlhttp.onreadystatechange=function() {
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-						switchONOFF(xmlhttp.responseText);
+						switchONOFF(xmlhttp.responseText); // mengambil data response text
 						
 					}
 				}
@@ -92,9 +100,9 @@
 					if(arr.status == 1){
 						arr.status = 0;
 						var text = JSON.stringify(arr);
-						$.ajax({
+						$.ajax({// ajax ini inisiasi dengan method post
 							type: "POST",
-							url: "createFile.php",
+							url: "createFile.php",// akan memanggil action createFile.php untuk memproses data text yang dikirim
 							data: {data : text}, 
 							
 						});
@@ -120,8 +128,8 @@
 
 				
 			});
-			var myVar2 = setInterval(machineStatus ,1000);
-			var myVar = setInterval(levelWaterUpdate ,1000);
+			var myVar2 = setInterval(machineStatus ,1000); // memanggil function machineStatus di interval 1000 
+			var myVar = setInterval(levelWaterUpdate ,1000); // memanggil function levelWaterUpdate di interval 1000
 
 			function machineStatus(){
 				var xmlhttp = new XMLHttpRequest();
@@ -138,9 +146,9 @@
 				function myFunction2(response) {
 					var arr2 = JSON.parse(response);
 					if(arr2.status == 1){
-						document.getElementById("status").innerHTML = "ON : machine is running";
+						document.getElementById("status").innerHTML = "ON : machine is running"; // menampilkan diweb tampilan ON
 					} else {
-						document.getElementById("status").innerHTML = "OFF : machine is not running";
+						document.getElementById("status").innerHTML = "OFF : machine is not running"; // menampilkan diweb tampilan OFF
 
 					}
 
@@ -161,7 +169,7 @@
 
 				function myFunction(response) {
 					var arr = JSON.parse(response);
-					if(arr.Level == 0 ){
+					if(arr.Level == 0 ){ // jika level air sudah 0 maka menandakan air sudah penuh
 						alert('FULL Please Switch Off');
 					}
 
