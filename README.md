@@ -18,13 +18,3 @@ memiliki format sbb:
 fungsi ini diImplementasikan oleh createFile.php yang dipanggil di javascript webservice-nya.
 
 
---------------PUNYA BINTANG-----------------------
-(GPIO)
-File yang mengatur GPIO dan mengatur hubungan antara web dan pi adalah:
- 
-1. ledStatus.sh: file ini bertugas mengatur lampu yang menyala saat ini, sesuai dengan level air pada penyimpanan air
-lampu yang menyala = +1 lampu setiap 20% ketinggian air.
-
-2. nyala.sh: file ini adalah file looping ketika mesin dalam keadaaan menyala, bertugas menghidupkan ledStatus, ketika mesin dimatikan, ia akan switch ke mati.sh
-
-3. mati.sh: file ini adalah looping saat mesin mati, fungsinya mematikan ledStatus dan semua led, jika mesin dinyalakan ia akan switch ke nyala.sh
