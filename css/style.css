@@ -1,0 +1,9 @@
+.borderleft{
+	border-left: 1px solid #EFEFEF;
+
+}
+
+.background-grey{
+	background:  #EFEFEF;
+	border-radius: 15px;
+}
